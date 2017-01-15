@@ -1047,6 +1047,29 @@ Webmail.prototype = {
         $("#add_cci").click($.proxy(function(e) { this.add_field(e, "cci"); }, this));
         this.editormode = resp.editor;
         if (resp.editor == "html") {
+            CKEDITOR.config.contentsLangDirection = 'rtl';
+            CKEDITOR.editorConfig = function( config )
+            {
+                config.language = 'fa';
+                config.uiColor = '#AADC6E';
+                config.toolbarGroups = [
+                { name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
+                { name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+                { name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
+                { name: 'forms', groups: [ 'forms' ] },
+                '/',
+                { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ] },
+                { name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'bidi', 'paragraph' ] },
+                { name: 'links', groups: [ 'links' ] },
+                { name: 'insert', groups: [ 'insert' ] },
+                '/',
+                { name: 'styles', groups: [ 'styles' ] },
+                { name: 'colors', groups: [ 'colors' ] },
+                { name: 'tools', groups: [ 'tools' ] },
+                { name: 'others', groups: [ 'others' ] },
+                { name: 'about', groups: [ 'about' ] }
+            ];
+                    };
             var instance = CKEDITOR.instances[this.editorid];
 
             $(window).resize($.proxy(this.resize_editor, this));
